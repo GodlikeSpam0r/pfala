@@ -109,8 +109,8 @@ function dragged(event, ui) {
 
 function getParent(element) {
     var pos = element.offset();
-    var xpos = pos.left + element.width() / 2;
-    var ypos = pos.top + element.height() / 2;
+    var xpos = pos.left + 5;
+    var ypos = pos.top + 5;
     var parent = $.touching({x: xpos, y: ypos}, 'td');
     return $(parent);
 }
@@ -125,7 +125,9 @@ function getStartTime(block) {
     var pPos = $parent.offset();
     var pos = block.offset();
 
-    var half = pos.top > pPos.top ? ':30' : ':00';
+    console.log(pos.top + "  " + pPos.top);
+
+    var half = pos.top > pPos.top+10 ? ':30' : ':00';
 
     var id = $parent[0].id;
     var num = parseInt(id.split('-')[2]) + 5;
