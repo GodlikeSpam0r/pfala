@@ -57,7 +57,9 @@ class CampController < ApplicationController
     @camp.add_user(user)
     camp_permission? @camp
 
-    redirect_to '/camp/'+ id , status: :found, :flash => {:status => :success, :notice => "Added user"}
+    puts "############################################"
+
+    redirect_to '/camp/'+ @camp.id , status: :found, :flash => {:status => :success, :notice => "Added user"}
   end
 
   def del_user
@@ -67,7 +69,7 @@ class CampController < ApplicationController
 
     @camp.remove_user(user)
 
-    redirect_to '/camp/'+ id , status: :found, :flash => {:status => :success, :notice => "Removed user"}
+    redirect_to '/camp/'+ @camp.id , status: :found, :flash => {:status => :success, :notice => "Removed user"}
   end
 
   def block_type

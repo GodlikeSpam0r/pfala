@@ -16,6 +16,6 @@
 //= require_tree ./default
 //= require bootstrap
 //= require bootstrap-datepicker
-//= require bootstrap-select
+//= require bootstrap-select.min
 //= require jquery-ui
 //= require jquery.nearest.min

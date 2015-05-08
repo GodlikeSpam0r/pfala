@@ -24,15 +24,11 @@
       <tr>
         <td><label>Start</label></td>
         <td>
-          <div class="input-group date">
-            <input type="text" class="form-control" name="camp_start" value="<%=@camp.camp_start%>"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-          </div>
+            <input type="text" class="form-control date" name="camp_start" value="<%=@camp.camp_start%>">
         </td>
         <td><label>End</label></td>
         <td>
-          <div class="input-group date">
-            <input type="text" class="form-control" name="camp_end" value="<%=@camp.camp_end%>"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-          </div>
+            <input type="text" class="form-control date" name="camp_end" value="<%=@camp.camp_end%>">
         </td>
       </tr>
     </table>
@@ -59,7 +55,7 @@
           <tr>
             <td><label>Add User</label></td>
             <td>
-              <select class="selectpicker" name="user">
+              <select class="selectpicker" name="user" data-live-search="true" data-size="5">
                 <% @users.each do |user| %>
                    <option value="<%= user._id %>"><%= user.name %></option>
                 <% end %>
@@ -73,12 +69,4 @@
     <% end %>
   </table>
 </div>
-
-<script type="text/javascript">
-    $('.date').datepicker({
-        weekStart: 1,
-        todayBtn: "linked",
-        todayHighlight: true,
-        format: 'dd-mm-yyyy'
-    });
-</script>
+<%= javascript_include_tag 'camp/camp', 'data-turbolinks-track' => true %>
