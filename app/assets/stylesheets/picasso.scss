@@ -1,0 +1,33 @@
+// Place all the styles related to the picasso controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.block{
+  background-color: #0000ff;
+  color: #ffffff;
+  position: absolute !important;
+  width: 96px;
+  margin: 1px 2px;
+}
+
+.picasso-cell{
+  height: 36px !important;
+}
+
+.picasso-head-cell{
+  height: 30px !important;
+  width: 100px !important;
+}
+
+.time-div{
+  padding-right: 0;
+}
+
+.picasso-div{
+  padding-left: 0;
+  z-index: 5;
+}
+
+.small-text{
+  font-size: 100%;
+}

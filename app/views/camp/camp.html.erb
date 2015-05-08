@@ -1,0 +1,27 @@
+<div class="well">
+  <h1>Camp</h1>
+  <ul>
+    <% unless @camps.nil?
+         @camps.each do |camp| %>
+            <li><%= link_to camp.name, 'camp/'+camp._id %></li>
+        <% end
+           end %>
+  </ul>
+
+  <h2>Add new camp</h2>
+
+  <form action="/camp/add" method="post">
+    <div class="input-group">
+      <span class="input-group-addon">Camp name</span>
+      <input type="text" name="name" class="form-control" placeholder="Camp name">
+    </div>
+    <br/>
+
+    <div class="input-group">
+      <span class="input-group-addon">Group name</span>
+      <input type="text" name="group" class="form-control" placeholder="Group name">
+    </div>
+    <br/>
+    <input type="submit" class="btn btn-success" value="Add">
+  </form>
+</div>

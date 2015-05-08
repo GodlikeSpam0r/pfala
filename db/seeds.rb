@@ -1,0 +1,2 @@
+#user = User.create! :name => "Test", :prename => "Acc", :vulgo => "Testa", :email => "test@a.ch", :password => "1234567890", :password_confirmation => "1234567890"
+block = BlockType.create! :name => "LA", :color => "#33FF33", :default => true

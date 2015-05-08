@@ -1,0 +1,8 @@
+<div class="well well-sm">
+  <ul>
+    <% unless @camp.nil? %>
+        <li><%= link_to 'Picasso', ('/camp/' + @camp._id + '/picasso') %></li>
+        <li><%= link_to 'Blocktypes', ('/camp/' + @camp._id + '/blocktypes') %></li>
+    <%end%>
+  </ul>
+</div>

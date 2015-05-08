@@ -1,0 +1,84 @@
+<div class="well">
+  <h1><%= @camp.name %></h1>
+
+  <h2>Camp info</h2>
+
+  <form action="/camp/<%= @camp._id %>/edit" method="post">
+    <table class="table bordered-table">
+      <tr>
+        <td><label>Camp name</label></td>
+        <td><input type="text" value="<%= @camp.name %>" class="form-control" name="name"></td>
+      </tr>
+      <tr>
+        <td><label>Group</label></td>
+        <td><input type="text" value="<%= @camp.group %>" class="form-control" name="group"></td>
+      </tr>
+      <tr>
+        <td><label>Coordinates</label></td>
+        <td><input type="text" value="<%= @camp.coordinates %>" class="form-control" name="coordinates"></td>
+      </tr>
+      <tr>
+        <td><label>Campground</label></td>
+        <td><input type="text" value="<%= @camp.campground %>" class="form-control" name="campground"></td>
+      </tr>
+      <tr>
+        <td><label>Start</label></td>
+        <td>
+          <div class="input-group date">
+            <input type="text" class="form-control" name="camp_start" value="<%=@camp.camp_start%>"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+          </div>
+        </td>
+        <td><label>End</label></td>
+        <td>
+          <div class="input-group date">
+            <input type="text" class="form-control" name="camp_end" value="<%=@camp.camp_end%>"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <input type="submit" class="btn btn-success" value="Save">
+  </form>
+
+  <h2>Users</h2>
+  <table class="table bordered-table stripped-table">
+    <% @camp_users.each do |user| %>
+        <form action="/camp/<%= @camp._id %>/userdel/<%= user._id %>" method="post">
+          <tr>
+            <td><label>User</label></td>
+            <td><%= user.name %></td>
+            <td>
+              <% unless user._id == @user._id %>
+                  <input type="submit" class="btn btn-danger" value="Remove">
+              <%end%>
+            </td>
+          </tr>
+        </form>
+    <% end %>
+    <% if @users.size > 0 %>
+        <form action="/camp/<%= @camp._id %>/useradd" method="post">
+          <tr>
+            <td><label>Add User</label></td>
+            <td>
+              <select class="selectpicker" name="user">
+                <% @users.each do |user| %>
+                   <option value="<%= user._id %>"><%= user.name %></option>
+                <% end %>
+              </select>
+            </td>
+            <td>
+              <input type="submit" class="btn btn-success" value="Add">
+            </td>
+          </tr>
+        </form>
+    <% end %>
+  </table>
+</div>
+
+<script type="text/javascript">
+    $('.date').datepicker({
+        weekStart: 1,
+        todayBtn: "linked",
+        todayHighlight: true,
+        format: 'dd-mm-yyyy'
+    });
+</script>

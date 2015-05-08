@@ -1,0 +1,58 @@
+<div class="modal fade" id="addBlockModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add new Block</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tr>
+            <td><label>Block name</label></td>
+            <td><input type="text" name="name" class="form-control"></td>
+          </tr>
+          <tr>
+            <td><label>Block start</label></td>
+            <td>
+              <select class="selectpicker" name="start">
+                <% for a in 5..28
+                    val = (a<10||a>23?'0':'')+(a>23?a-24:a).to_s%>
+                    <option value="<%= val+':00' %>"><%= val+':00' %></option>
+                    <option value="<%= val+':30' %>"><%= val+':30' %></option>
+                <%end%>
+              </select>
+            </td>
+          </tr>
+          <tr>
+              <td><label>Block duration</label></td>
+              <td>
+                <select class="selectpicker" name="duration">
+                  <option value="00:30">00:30</option>
+                  <% for a in 1..11
+                       val = (a<10||a>23?'0':'')+(a>23?a-24:a).to_s%>
+                      <option value="<%= val+':00' %>"><%= val+':00' %></option>
+                      <option value="<%= val+':30' %>"><%= val+':30' %></option>
+                  <%end%>
+                  <option value="12:00">12:00</option>
+                </select>
+              </td>
+          </tr>
+        <tr>
+          <td><label>Blocktype</label></td>
+          <td>
+            <select class="selectpicker" name="block-type">
+              <% @block_types.each do |block_type| %>
+                  <option value="<%= block_type._id %>"><%= block_type.name %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="saveBlockButton" data-dismiss="modal">Save</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

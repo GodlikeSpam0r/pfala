@@ -1,0 +1,16 @@
+<div class="well">
+  <form action="/camp/<%=@camp._id%>/blocktypes/edit/<%= @bt._id%>" method="post">
+    <table class="table bordered-table">
+      <tr>
+        <td><label>Name</label></td>
+        <td><input type="text" value="<%= @bt.name %>" class="form-control" name="name"></td>
+      </tr>
+      <tr>
+        <td><label>Color</label></td>
+        <td><input type="text" value="<%= @bt.color %>" class="form-control" name="color"></td>
+      </tr>
+     </table>
+    <input type="submit" class="btn btn-success" value="Save">
+  </form>
+
+</div>

@@ -1,0 +1,50 @@
+<%= javascript_tag do %>
+    window.campID = '<%= @camp._id%>';
+    window.campStart = '<%= @camp.camp_start %>';
+<%end%>
+<div class="well well-sm">
+  <div class="row">
+    <div class="col-md-1 time-div">
+      <table class = "table table-condensed table-hover table-striped table-bordered">
+        <thead>
+        <th class="picasso-head-cell">Time</th>
+        </thead>
+        <tbody>
+        <% for a in 5..28 %>
+            <tr>
+              <td class="picasso-cell small-text">
+                <%= (a<10||a>23?'0':'')+(a>23?a-24:a).to_s+':00'%>
+              </td>
+            </tr>
+        <%end%>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-11 picasso-div">
+      <table class = "table-condensed table-hover table-striped table-bordered">
+        <thead>
+        <% for i in 0..@length %>
+            <th class="picasso-head-cell">
+              <%= (@camp.camp_start + i)%>
+            </th>
+        <% end %>
+        </thead>
+        <tbody class="block-table">
+            <% for a in 0..23 %>
+                <tr>
+                  <% for i in 0..@length %>
+                      <td id="cell-<%=i%>-<%=a%>"  class="picasso-cell"></td>
+                  <% end %>
+                </tr>
+            <%end%>
+        </tbody>
+      </table>
+      <% unless @blocks.nil? %>
+          <% @blocks.each do |block|%>
+              <div class="block small-text" style="background-color:<%= block.get_color %>" data-date="<%= block.date %>" data-start="<%= block.start %>" data-duration="<%= block.duration %>" data-id="<%= block._id %>"><%=block.name%></div>
+          <% end %>
+      <%end%>
+    </div>
+  </div>
+</div>
+<%= render 'partials/add_block' %>

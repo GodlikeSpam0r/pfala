@@ -1,0 +1,35 @@
+<div class="well">
+  <h1>Blocktypes for <%= @camp.name %></h1>
+    <table class="table">
+        <thead>
+            <th>Blocktype</th>
+        </thead>
+        <% @block_types.each do |block_type|%>
+          <tr>
+            <td style="color:<%=block_type.color%>;"><%=block_type.name%></td>
+            <td><a href="/camp/<%=@camp._id%>/blocktypes/edit/<%= block_type._id%>" class="btn btn-warning">Edit</a></td>
+            <td>
+              <% unless block_type.default %>
+                <form action="/camp/<%=@camp._id%>/blocktypes/del/<%= block_type._id%>" method="POST">
+                  <input type="submit" class="btn btn-danger" value="Remove">
+                </form>
+              <%end%>
+            </td>
+          </tr>
+        <%end%>
+    </table>
+  <h2>Add Blocktype</h2>
+  <form action="/camp/<%=@camp._id%>/blocktypes/add" method="POST">
+    <div class="input-group">
+      <span class="input-group-addon">Blocktype name</span>
+      <input type="text" name="name" class="form-control">
+    </div>
+    <br />
+    <div class="input-group">
+      <span class="input-group-addon">Color</span>
+      <input type="text" name="color" class="form-control">
+    </div>
+    <br />
+    <input type="submit" class="btn btn-success" value="Add">
+  </form>
+</div>

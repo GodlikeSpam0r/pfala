@@ -1,0 +1,6 @@
+<div class="well">
+  <h1>Hallo</h1>
+  <% @users.each do |user| %>
+      <p>User: <%=link_to user.name, user %></p>
+  <% end %>
+</div>
